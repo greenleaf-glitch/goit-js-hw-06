@@ -11,6 +11,7 @@ categoriesArr.forEach((category) => {
     "Category: ",
     category.firstElementChild.textContent
   );
+
   console.log(
     "Elements: ",
     category.querySelectorAll("li").length

@@ -28,14 +28,14 @@ img {
   display: block;
 }
 
-ul,
-ol {
+.gallery {
   padding: 0;
   margin: 0;
 }
 
 .gallery-container {
-  width: 1200px;
+  min-width: 1150px;
+  width: 100%;
   height: 350px;
   background-color: rgba(100, 133, 106, 0.484);
 

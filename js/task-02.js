@@ -8,10 +8,12 @@ const ingredients = [
 ];
 
 const ulTarget = document.querySelector("ul");
+let element = "";
 
-const markup = ingredients.forEach((ingredient) => {
-  let element = document.createElement("li");
-  element.textContent = ingredient;
-  element.classList.add("item");
-  ulTarget.append(element);
-});
+const markup = ingredients
+  .map((ingredient) => {
+    return `<li class="item">${ingredient}</li>`;
+  })
+  .join("");
+
+ulTarget.insertAdjacentHTML("afterbegin", markup);

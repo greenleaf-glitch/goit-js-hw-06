@@ -1,5 +1,17 @@
+const refs = {
+  counterEl: document.querySelector("#counter"),
+  span: document.querySelector("#value"),
+};
+
+const btnDecr = refs.counterEl.firstElementChild;
+const btnIncr = refs.counterEl.lastElementChild;
 let counterValue = 0;
-const counterEl = document.querySelector("#counter");
-console.log(counter);
-const btnDecrementEl = counter.dataset.action;
-console.log(btnDecrementEl);
+
+btnDecr.addEventListener("click", (event) => {
+  counterValue--;
+  return (refs.span.textContent = counterValue);
+});
+btnIncr.addEventListener("click", (event) => {
+  counterValue++;
+  return (refs.span.textContent = counterValue);
+});
