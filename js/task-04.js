@@ -5,13 +5,15 @@ const refs = {
 
 const btnDecr = refs.counterEl.firstElementChild;
 const btnIncr = refs.counterEl.lastElementChild;
+
 let counterValue = 0;
 
-btnDecr.addEventListener("click", (event) => {
+btnDecr.addEventListener("click", () => {
   counterValue--;
   return (refs.span.textContent = counterValue);
 });
-btnIncr.addEventListener("click", (event) => {
+
+btnIncr.addEventListener("click", () => {
   counterValue++;
   return (refs.span.textContent = counterValue);
 });

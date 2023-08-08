@@ -1,9 +1,3 @@
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, 0)}`;
-}
-
 const refs = {
   boxes: document.querySelector("#boxes"),
   controls: document.querySelector("#controls"),
@@ -14,19 +8,38 @@ const refs = {
   input: document.querySelector("input"),
 };
 
-let amount;
+let boxAmount;
 let boxSize = 30;
 
-refs.input.addEventListener("input", (event) => {
-  amount = event.currentTarget.value;
-});
+refs.input.addEventListener("input", getInputValue);
 refs.createBtn.addEventListener("click", createBoxes);
 refs.destroyBtn.addEventListener("click", destroyBoxes);
 
-function createBoxes(amount) {
-  amount = refs.input.value;
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}
 
-  for (let index = 0; index < amount; index++) {
+function getInputValue(event) {
+  boxAmount = 0;
+  const min = Number(refs.input.min);
+  const max = Number(refs.input.max);
+  const currentValue = Math.round(
+    parseFloat(event.currentTarget.value)
+  );
+
+  if (
+    !isNaN(currentValue) &&
+    currentValue >= min &&
+    currentValue <= max
+  ) {
+    return (boxAmount = currentValue);
+  }
+}
+
+function createBoxes() {
+  for (let index = 0; index < boxAmount; index++) {
     const newBox = document.createElement("div");
     newBox.style.width = `${boxSize}px`;
     newBox.style.height = `${boxSize}px`;
@@ -34,7 +47,6 @@ function createBoxes(amount) {
     refs.boxes.append(newBox);
     boxSize += 10;
   }
-  refs.input.reset();
 }
 
 function destroyBoxes() {
