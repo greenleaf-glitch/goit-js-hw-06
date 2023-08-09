@@ -39,14 +39,16 @@ function getInputValue(event) {
 }
 
 function createBoxes() {
+  let boxArr = [];
   for (let index = 0; index < boxAmount; index++) {
     const newBox = document.createElement("div");
     newBox.style.width = `${boxSize}px`;
     newBox.style.height = `${boxSize}px`;
     newBox.style.backgroundColor = getRandomHexColor();
-    refs.boxes.append(newBox);
+    boxArr.push(newBox);
     boxSize += 10;
   }
+  refs.boxes.append(...boxArr);
 }
 
 function destroyBoxes() {

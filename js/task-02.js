@@ -8,12 +8,19 @@ const ingredients = [
 ];
 
 const ulTarget = document.querySelector("ul");
-let element = "";
 
-const markup = ingredients
-  .map((ingredient) => {
-    return `<li class="item">${ingredient}</li>`;
-  })
-  .join("");
+const elArr = ingredients.map((ingredient) => {
+  let newEl = document.createElement("li");
+  newEl.textContent = ingredient;
+  newEl.classList.add("item");
+  return newEl;
+});
 
-ulTarget.insertAdjacentHTML("afterbegin", markup);
+ulTarget.append(...elArr);
+
+// const markup = ingredients
+//   .map((ingredient) => {
+//     return `<li class="item">${ingredient}</li>`;
+//   })
+//   .join("");
+// ulTarget.insertAdjacentHTML("afterbegin", markup);
